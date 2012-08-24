@@ -20,7 +20,7 @@ body {
 }
 .page-header { /* Page header tweaks */
 	background-color: #f5f5f5;
-	padding: 20px 20px 10px;
+	padding: 1px 20px 1px;
 	margin: -20px -20px 20px;
 	border-bottom: 1px solid #ddd;
 }
@@ -53,7 +53,6 @@ body {
   	margin-bottom: 15px;
 }
 .input-prepend .add-on {
-  	margin-right: -5px;
 	color: #999;
 }
 
