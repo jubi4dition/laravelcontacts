@@ -14,7 +14,7 @@
 		</div>
 	</div>
 	<?=HTML::script('js/jquery.js'); ?>
-	<script type="text/javascript">
+	<script>
 	$(document).ready(function() {		
 		$(".content").fadeIn(1000);
 	});

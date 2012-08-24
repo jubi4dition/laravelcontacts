@@ -36,7 +36,7 @@
 	</div>
 	<?=HTML::script('js/jquery.js'); ?>
 	<?=HTML::script('js/bootstrap-button.js'); ?>
-	<script type="text/javascript">
+	<script>
 	$(document).ready(function() {
 		
 		$("#formDelete").submit(function(){
