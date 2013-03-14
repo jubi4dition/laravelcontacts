@@ -10,7 +10,9 @@ class User_Controller extends Base_Controller {
 
 	public function action_index()
 	{
-		$contacts = Contacts::get_contacts(Session::get('uid'));
+		//$contacts = Contacts::get_contacts(Session::get('uid'));
+		$contacts = Contact::where('uid', '=', Session::get('uid'))->get();
+
 		return View::make('user.contacts')->with('contacts', $contacts); 
 	}
 
@@ -55,7 +57,9 @@ class User_Controller extends Base_Controller {
 
 	public function action_delete()
 	{
-		$contacts = Contacts::get_contacts(Session::get('uid'));
+		//$contacts = Contacts::get_contacts(Session::get('uid'));
+		$contacts = Contact::where('uid', '=', Session::get('uid'))->get();
+
 		if (count($contacts) > 0) {
 			return View::make('user.delete')->with('contacts', $contacts);
 		} else {
@@ -93,7 +97,9 @@ class User_Controller extends Base_Controller {
 
 	public function action_edit()
 	{
-		$contacts = Contacts::get_contacts(Session::get('uid'));
+		//$contacts = Contacts::get_contacts(Session::get('uid'));
+		$contacts = Contact::where('uid', '=', Session::get('uid'))->get();
+		
 		if (count($contacts) > 0) {
 			return View::make('user.edit')->with('contacts', $contacts);
 		} else {
@@ -173,6 +179,15 @@ class User_Controller extends Base_Controller {
 				$data = array('success' => FALSE, 'message' => $message);
 				return Response::json($data);
 			}
+		}
+	}
+
+	public function action_test()
+	{
+		$users = User::all();
+
+		foreach ($users as $user) {
+			echo $user->email;
 		}
 	}
 
