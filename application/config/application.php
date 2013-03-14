@@ -53,7 +53,7 @@ return array(
 	|
 	*/
 
-	'key' => 'ABCDEF123456',
+	'key' => 'AXoexM0jhIg4wRvr2flbEVPAuhOwWjbO',
 
 	/*
 	|--------------------------------------------------------------------------

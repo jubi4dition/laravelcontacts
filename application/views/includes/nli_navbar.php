@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="navbar navbar-static-top">
 	<div class="navbar-inner">
 		<div class="container">
 			<a class="brand" href="#"><img src="<?=URL::to_asset('img/yourcontacts.png') ?>" width="57px"/></a>

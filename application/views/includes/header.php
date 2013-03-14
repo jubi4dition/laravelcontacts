@@ -11,6 +11,7 @@
 	<![endif]-->
 <!-- Le styles -->
 <?=HTML::style('css/bootstrap.css'); ?>
+<?=HTML::style('css/bootstrap-responsive.css'); ?>
 <?=HTML::style('css/yourcontacts.css'); ?>
 <?=HTML::style('css/font-awesome.css'); ?>
 <?=HTML::style('css/tablesorter.css'); ?>

@@ -1,6 +1,6 @@
 /* Override some defaults */
 html,body {
-	background-image: url("img/bgimg.png");
+	background-image: url("img/mochaGrunge.png");
 }
 body {
 	overflow-y: scroll; /* force vertical scrollbar */
@@ -8,21 +8,23 @@ body {
 .container>footer p {
 	text-align: center; /* center align it with the container */
 }
-.container {
-	width: 820px; /* downsize our container*/
-}
 .content { /* The white background content wrapper */
 	background-color: #fff;
 	padding: 20px;
 	margin: 0 0px 15px;
-	border-radius: 0 0 6px 6px;
-	border: 1px solid #ddd;
+	border-radius: 0px;
+	border: 1px solid #454545;
 }
 .page-header { /* Page header tweaks */
-	background-color: #f5f5f5;
+	background-color: #454545;
 	padding: 1px 20px 1px;
 	margin: -20px -20px 20px;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #7D7D7D;
+}
+.page-header h1 {
+	line-height: 32px;
+	font-size: 30px;
+	color: #DDDDDD;
 }
 .content {
 	min-height: 350px; /* minimum height for the content */
@@ -46,9 +48,6 @@ body {
 	width: 50px;
 	text-align: center;
 }
-.navbar .container {
-	width: 820px;
-}
 .input-prepend, .input-append {
   	margin-bottom: 15px;
 }
@@ -56,3 +55,23 @@ body {
 	color: #999;
 }
 
+.navbar-inner {
+  min-height: 40px;
+  padding-right: 20px;
+  padding-left: 20px;
+  background-color: #5BB75B;
+  background-image: -moz-linear-gradient(top, #62C462, #51A351);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(##62C462), to(#51A351));
+  background-image: -webkit-linear-gradient(top, #62C462, #51A351);
+  background-image: -o-linear-gradient(top, #62C462, #51A351);
+  background-image: linear-gradient(to bottom, #62C462, #51A351);
+  background-repeat: repeat-x;
+  border: 1px solid #4E8E4E;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
+  *zoom: 1;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+     -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+}
