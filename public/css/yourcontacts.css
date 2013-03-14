@@ -1,58 +1,58 @@
 /* Override some defaults */
 html,body {
-	background-image: url("img/mochaGrunge.png");
+  background-image: url("img/mochaGrunge.png");
 }
 body {
-	overflow-y: scroll; /* force vertical scrollbar */
+  overflow-y: scroll; /* force vertical scrollbar */
 }
 .container>footer p {
-	text-align: center; /* center align it with the container */
+  text-align: center; /* center align it with the container */
 }
 .content { /* The white background content wrapper */
-	background-color: #fff;
-	padding: 20px;
-	margin: 0 0px 15px;
-	border-radius: 0px;
-	border: 1px solid #454545;
+  background-color: #fff;
+  padding: 20px;
+  margin: 0 0px 15px;
+  border-radius: 0px;
+  border: 1px solid #454545;
 }
 .page-header { /* Page header tweaks */
-	background-color: #454545;
-	padding: 1px 20px 1px;
-	margin: -20px -20px 20px;
-	border-bottom: 1px solid #7D7D7D;
+  background-color: #454545;
+  padding: 1px 20px 1px;
+  margin: -20px -20px 20px;
+  border-bottom: 1px solid #7D7D7D;
 }
 .page-header h1 {
-	line-height: 32px;
-	font-size: 30px;
-	color: #DDDDDD;
+  line-height: 32px;
+  font-size: 30px;
+  color: #DDDDDD;
 }
 .content {
-	min-height: 350px; /* minimum height for the content */
+  min-height: 350px; /* minimum height for the content */
 }
 .navbar .btn {
-  	margin-top: 0; /* Centering button in navbar */
+    margin-top: 0; /* Centering button in navbar */
 }
 .btn {
-	font-weight: bold; /* All buttons bold */
+  font-weight: bold; /* All buttons bold */
 }
 .navbar .brand {
-	padding: 4px 20px 4px;	/* Smaller and centering Padding */ 
+  padding: 4px 20px 4px;  /* Smaller and centering Padding */ 
 }
 .navbar { 
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 .navbar .divider-vertical {
-	margin: 0;
+  margin: 0;
 }
 .navbar .nav > li > a {
-	width: 50px;
-	text-align: center;
+  width: 50px;
+  text-align: center;
 }
 .input-prepend, .input-append {
-  	margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 .input-prepend .add-on {
-	color: #999;
+  color: #999;
 }
 
 .navbar-inner {
@@ -74,4 +74,27 @@ body {
   *zoom: 1;
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
      -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+}
+.navbar .divider-vertical { 
+  border-left: 1px solid #63B363;
+  border-right: 1px solid #63B363;
+}
+.navbar .nav > .active > a, .navbar .nav > .active > a:hover, .navbar .nav > .active > a:focus { 
+  background-color: #63B363;
+}
+.navbar .nav > li > a {
+  color: #DDDDDD;
+  text-shadow: none;
+}
+.navbar .nav > li > a:focus, .navbar .nav > li > a:hover {
+  color: #454545;
+}
+.navbar-text {
+  color: #454545;
+}
+.navbar-text > a {
+  color: #DDDDDD;
+}
+.navbar-text > a:hover {
+  color: #DDDDDD;
 }

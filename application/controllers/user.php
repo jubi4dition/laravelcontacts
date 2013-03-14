@@ -24,14 +24,14 @@ class User_Controller extends Base_Controller {
 	public function action_add_contact()
 	{
 		sleep(1);
-		//$input = Input::all();
 		
 		$rules = array(
 			'name' => 'required|max:60|alpha_dash',
 			'email' => 'required|max:60|email',
 			'phone' => 'required|max:30|alpha_num'
 		);
-		$validation = Validator::make(Input::all(), $rules);
+
+		$validation = Validator::make(Input::get(), $rules);
 		
 		if ($validation->fails()) {
 			$data = array(
@@ -41,20 +41,11 @@ class User_Controller extends Base_Controller {
 
 			return Response::json($data);
 		} else {
-			$name = Input::get('name');/*
-			$email = Input::get('email');
-			$phone = Input::get('phone');*/
-			
-			//$is_added = Contacts::add_contact(Session::get('uid'), $name, $email, $phone);
-			/*$contact = new Contact;
-			$contact->name = Input::get('name');
-			$contact->email = Input::get('email');
-			$contact->phone = Input::get('phone');
-			$contact->save();*/
+			$name = Input::get('name');
 
 			$created = Contact::create(array(
 				'uid' => Session::get('uid'),
-				'name' => Input::get('name'),
+				'name' => $name,
 				'email' => Input::get('email'),
 				'phone' => Input::get('phone')
 			));
@@ -76,23 +67,17 @@ class User_Controller extends Base_Controller {
 
 	public function action_delete()
 	{
-		//$contacts = Contacts::get_contacts(Session::get('uid'));
 		$contacts = Contact::where('uid', '=', Session::get('uid'))->get();
 
-		if (count($contacts) > 0) {
-			return View::make('user.delete')->with('contacts', $contacts);
-		} else {
-			return View::make('user.delete_error');
-		}
-		
+		return View::make('user.delete')->with('contacts', $contacts);
 	}
 
 	public function action_delete_contact()
 	{
 		sleep(1);
-		$input = Input::all();
-		$rules = array('name' => 'required|max:40|alpha_dash');
-		$validation = Validator::make($input, $rules);
+		
+		$validation = Validator::make(Input::get(), array('name' => 'required|max:60|alpha_dash'));
+		
 		if ($validation->fails()) {
 			$message = "<strong>Deletion</strong> failed!";
 			$data = array(
@@ -102,7 +87,10 @@ class User_Controller extends Base_Controller {
 			return Response::json($data);
 		} else {
 			$name = Input::get('name');
-			Contacts::delete_contact(Session::get('uid'), $name);
+
+			Contact::where('uid', '=', Session::get('uid'))
+				->where('name', '=', $name)
+				->delete();
 
 			$message = "<strong>".$name."</strong> has been deleted!";
 			$data = array(
@@ -116,51 +104,57 @@ class User_Controller extends Base_Controller {
 
 	public function action_edit()
 	{
-		//$contacts = Contacts::get_contacts(Session::get('uid'));
 		$contacts = Contact::where('uid', '=', Session::get('uid'))->get();
 
-		if (count($contacts) > 0) {
-			return View::make('user.edit')->with('contacts', $contacts);
-		} else {
-			return View::make('user.edit_error');
-		}	
+		return View::make('user.edit')->with('contacts', $contacts);
 	}
 
 	public function action_edit_contact()
 	{
 		sleep(1);
-		$input = Input::all();
+
 		$rules = array(
-			'name' => 'required|max:40|alpha_dash',
-			'email' => 'required|max:40|email',
-			'phone' => 'required|max:15|alpha_num'
+			'name' => 'required|max:60|alpha_dash',
+			'email' => 'required|max:60|email',
+			'phone' => 'required|max:30|alpha_num'
 		);
-		$validation = Validator::make($input, $rules);
+
+		$validation = Validator::make(Input::get(), $rules);
+		
 		if ($validation->fails()) {
 			$message = "<strong>Editing</strong> failed!";
 			$data = array('success' => FALSE, 'message' => $message);
 			return Response::json($data);
 		} else {
 			$name = Input::get('name');
-			$email = Input::get('email');
-			$phone = Input::get('phone');
-			
-			Contacts::update_contact(Session::get('uid'), $name, $email, $phone);
-			
+
+			$contact = Contact::where('uid', '=', Session::get('uid'))
+				->where('name', '=', $name)
+				->first();
+
+			$contact->email  = Input::get('email');
+			$contact->phone = Input::get('phone');
+			$contact->save();
+
 			$message = "Editing for <strong>".$name."</strong> has been done!";
 			$data = array('success' => TRUE, 'message' => $message);
+
 			return Response::json($data);
 		}	
 	}
 
 	public function action_contactdata()
 	{
-		$contact = Contacts::get_contact_data(Session::get('uid'), Input::get('name'));
+		$contact = Contact::where('uid', '=', Session::get('uid'))
+			->where('name', '=', Input::get('name'))
+			->first();
+
 		$data = array(
 			'success' => TRUE,
 			'email' => $contact->email,
 			'phone' => $contact->phone
 		);
+		
 		return Response::json($data);
 	}
 
@@ -172,12 +166,12 @@ class User_Controller extends Base_Controller {
 	public function action_profile_password()
 	{
 		sleep(1);
-		$input = Input::all();
+
 		$rules = array(
 			'curpwd' => 'required|max:20|alpha_num',
 			'newpwd' => 'required|max:20|alpha_num'
 		);
-		$validation = Validator::make($input, $rules);
+		$validation = Validator::make(Input::all(), $rules);
 		if ($validation->fails()) {
 			$message = '<strong>Changing</strong> failed!';
 			$data = array('success' => FALSE, 'message' => $message);
