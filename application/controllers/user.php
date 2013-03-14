@@ -11,7 +11,6 @@ class User_Controller extends Base_Controller {
 
 	public function action_index()
 	{
-		//$contacts = Contacts::get_contacts(Session::get('uid'));
 		$contacts = Contact::where('uid', '=', Session::get('uid'))->get();
 
 		return View::make('user.contacts')->with('contacts', $contacts); 
@@ -25,31 +24,50 @@ class User_Controller extends Base_Controller {
 	public function action_add_contact()
 	{
 		sleep(1);
-		$input = Input::all();
+		//$input = Input::all();
+		
 		$rules = array(
-			'name' => 'required|max:40|alpha_dash',
-			'email' => 'required|max:40|email',
-			'phone' => 'required|max:15|alpha_num'
+			'name' => 'required|max:60|alpha_dash',
+			'email' => 'required|max:60|email',
+			'phone' => 'required|max:30|alpha_num'
 		);
-		$validation = Validator::make($input, $rules);
+		$validation = Validator::make(Input::all(), $rules);
+		
 		if ($validation->fails()) {
 			$data = array(
 				'success' => FALSE,
 				'message' => "<strong>Adding</strong> failed!"
 			);
+
 			return Response::json($data);
 		} else {
-			$name = Input::get('name');
+			$name = Input::get('name');/*
 			$email = Input::get('email');
-			$phone = Input::get('phone');
-			$is_added = Contacts::add_contact(Session::get('uid'), $name, $email, $phone);
-			if ($is_added) {
+			$phone = Input::get('phone');*/
+			
+			//$is_added = Contacts::add_contact(Session::get('uid'), $name, $email, $phone);
+			/*$contact = new Contact;
+			$contact->name = Input::get('name');
+			$contact->email = Input::get('email');
+			$contact->phone = Input::get('phone');
+			$contact->save();*/
+
+			$created = Contact::create(array(
+				'uid' => Session::get('uid'),
+				'name' => Input::get('name'),
+				'email' => Input::get('email'),
+				'phone' => Input::get('phone')
+			));
+
+			if ($created) {
 				$message = "<strong>".$name."</strong> has been added!";
 				$data = array('success' => TRUE, 'message' => $message);
+				
 				return Response::json($data);
 			} else {
 				$message = "<strong>".$name."</strong> already exists!";
 				$data = array('success' => FALSE, 'message' => $message);
+				
 				return Response::json($data);
 			}
 			
@@ -185,10 +203,10 @@ class User_Controller extends Base_Controller {
 
 	public function action_test()
 	{
-		$users = User::all();
-
-		foreach ($users as $user) {
-			echo $user->email;
+		if(Contact::$timestamps) {
+			return "true";
+		} else {
+			return "false";
 		}
 	}
 
