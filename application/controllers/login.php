@@ -4,31 +4,34 @@ class Login_Controller extends Base_Controller {
 
 	public function action_index()
 	{		
-		if (Session::get('logged_in') == TRUE) {
-			return Redirect::to('user');
-		} else {
-			return View::make('login.index')->with('error', FALSE);
-		}
+		if (Auth::guest()) {
+            return View::make('login.index');
+        } else {
+            return Redirect::to('home');
+        }
 	}
 
-	public function action_checklogin()
+	public function action_check()
 	{
 		$rules = array(
-			'email' => 'required|max:40|email',
-			'pwd' => 'required|max:20|alpha_num'
+			'email' => 'required|max:60|email',
+			'pwd' => 'required|max:30|alpha_num'
 		);
+
 		$validation = Validator::make(Input::all(), $rules);
+		
 		if ($validation->fails()) {
 			return Redirect::to('login/error');
 		}
 
 		$email = Input::get('email');
 		$password = Input::get('pwd');
-		$is_user = Users::is_user($email, $password);
-		if ($is_user) {
-			Session::put('uid', Users::get_uid($email));
-			Session::put('email', $email);
-			Session::put('logged_in', TRUE);
+		$credentials = array('username' => $email, 'password' => $password);
+        
+        if (Auth::attempt($credentials)) {
+			Session::put('uid', Auth::user()->id);
+			Session::put('email', Auth::user()->email);
+			
 			return Redirect::to('user');
 		} else {
 			return Redirect::to('login/error');
@@ -37,13 +40,14 @@ class Login_Controller extends Base_Controller {
 
 	public function action_error()
 	{
-		return View::make('login.index')->with('error', TRUE);
+		return View::make('login.index')->with('error', true);
 	}
 
 	public function action_logout()
 	{
-		Session::flush();
-		return View::make('login.index')->with('error', FALSE);
+		Auth::logout();
+
+		return View::make('login.index');
 	}
 
 }

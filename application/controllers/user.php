@@ -5,7 +5,8 @@ class User_Controller extends Base_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->filter('before', 'logged_in');
+
+		$this->filter('before', 'auth');
 	}
 
 	public function action_index()
@@ -99,7 +100,7 @@ class User_Controller extends Base_Controller {
 	{
 		//$contacts = Contacts::get_contacts(Session::get('uid'));
 		$contacts = Contact::where('uid', '=', Session::get('uid'))->get();
-		
+
 		if (count($contacts) > 0) {
 			return View::make('user.edit')->with('contacts', $contacts);
 		} else {
