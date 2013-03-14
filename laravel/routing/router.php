@@ -76,6 +76,7 @@ class Router {
 	public static $patterns = array(
 		'(:num)' => '([0-9]+)',
 		'(:any)' => '([a-zA-Z0-9\.\-_%=]+)',
+		'(:segment)' => '([^/]+)',
 		'(:all)' => '(.*)',
 	);
 
@@ -87,6 +88,7 @@ class Router {
 	public static $optional = array(
 		'/(:num?)' => '(?:/([0-9]+)',
 		'/(:any?)' => '(?:/([a-zA-Z0-9\.\-_%=]+)',
+		'/(:segment?)' => '(?:/([^/]+)',
 		'/(:all?)' => '(?:/(.*)',
 	);
 
@@ -206,7 +208,12 @@ class Router {
 				continue;
 			}
 
-			$uri = str_replace('(:bundle)', static::$bundle, $uri);
+			$uri = ltrim(str_replace('(:bundle)', static::$bundle, $uri), '/');
+			
+			if($uri == '')
+			{
+				$uri = '/';
+			}
 
 			// If the URI begins with a wildcard, we want to add this route to the
 			// array of "fallback" routes. Fallback routes are always processed
@@ -489,7 +496,7 @@ class Router {
 			// we just did before we started searching.
 			if (str_contains($route, '('))
 			{
-				$pattern = '#^'.static::wildcards($route).'$#';
+				$pattern = '#^'.static::wildcards($route).'$#u';
 
 				// If we get a match we'll return the route and slice off the first
 				// parameter match, as preg_match sets the first array item to the
