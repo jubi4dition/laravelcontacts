@@ -45,7 +45,8 @@ body {
   margin: 0;
 }
 .navbar .nav > li > a {
-  width: 50px;
+  width: 60px;
+  padding: 10px;
   text-align: center;
 }
 .input-prepend, .input-append {

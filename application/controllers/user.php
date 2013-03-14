@@ -16,55 +16,6 @@ class User_Controller extends Base_Controller {
 		return View::make('user.contacts')->with('contacts', $contacts); 
 	}
 
-	public function action_add()
-	{
-		return View::make('user.add');
-	}
-
-	public function action_add_contact()
-	{
-		sleep(1);
-		
-		$rules = array(
-			'name' => 'required|max:60|alpha_dash',
-			'email' => 'required|max:60|email',
-			'phone' => 'required|max:30|alpha_num'
-		);
-
-		$validation = Validator::make(Input::get(), $rules);
-		
-		if ($validation->fails()) {
-			$data = array(
-				'success' => FALSE,
-				'message' => "<strong>Adding</strong> failed!"
-			);
-
-			return Response::json($data);
-		} else {
-			$name = Input::get('name');
-
-			$created = Contact::create(array(
-				'uid' => Session::get('uid'),
-				'name' => $name,
-				'email' => Input::get('email'),
-				'phone' => Input::get('phone')
-			));
-
-			if ($created) {
-				$message = "<strong>".$name."</strong> has been added!";
-				$data = array('success' => TRUE, 'message' => $message);
-				
-				return Response::json($data);
-			} else {
-				$message = "<strong>".$name."</strong> already exists!";
-				$data = array('success' => FALSE, 'message' => $message);
-				
-				return Response::json($data);
-			}
-			
-		}	
-	}
-
 	public function action_delete()
 	{
 		$contacts = Contact::where('uid', '=', Session::get('uid'))->get();

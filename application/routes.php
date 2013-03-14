@@ -34,6 +34,7 @@
 
 Route::controller('login');
 
+Route::controller('user.contacts');
 Route::controller('user');
 
 Route::get('/', function()

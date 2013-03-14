@@ -4,11 +4,13 @@
 			<a class="brand" href="<?=URL::to('user'); ?>"><img src="<?=URL::to_asset('img/yourcontacts.png'); ?>" width="57px"/></a>
 			<ul class="nav">
 				<li class="divider-vertical"></li>
-				<li <? if ($active == "add") echo "class=\"active\"" ?>><?=HTML::link('user/add', 'Add'); ?></li>
+				<li><?=HTML::link('user/contacts', 'Contacts'); ?></li>
 				<li class="divider-vertical"></li>
-				<li <? if ($active == "delete") echo "class=\"active\"" ?>><?=HTML::link('user/delete', 'Delete'); ?></li>
+				<li><?=HTML::link('user/contacts/add', 'Add'); ?></li>
 				<li class="divider-vertical"></li>
-				<li <? if ($active == "edit") echo "class=\"active\"" ?>><?=HTML::link('user/edit', 'Edit'); ?></li>
+				<li><?=HTML::link('user/delete', 'Delete'); ?></li>
+				<li class="divider-vertical"></li>
+				<li><?=HTML::link('user/edit', 'Edit'); ?></li>
 				<li class="divider-vertical"></li>
 			</ul>
 			<div class="pull-right">
