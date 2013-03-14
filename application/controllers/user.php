@@ -21,35 +21,40 @@ class User_Controller extends Base_Controller {
         return View::make('user.profile');
     }
 
-    public function action_profile_password()
+    public function action_password()
     {
         sleep(1);
 
         $rules = array(
-            'curpwd' => 'required|max:20|alpha_num',
-            'newpwd' => 'required|max:20|alpha_num'
+            'curpwd' => 'required|max:30|alpha_num',
+            'newpwd' => 'required|max:30|alpha_num'
         );
-        $validation = Validator::make(Input::all(), $rules);
+
+        $validation = Validator::make(Input::get(), $rules);
+
         if ($validation->fails()) {
             $message = '<strong>Changing</strong> failed!';
-            $data = array('success' => FALSE, 'message' => $message);
-            return Response::json($data);
-        } else {
-            $cur_pwd = Input::get('curpwd');
-            $new_pwd = Input::get('newpwd');
+            
+            return Helper::json(false, $message);
+        }
 
-            $pwd_valid = Users::validate_password(Session::get('uid'), $cur_pwd);
-            if ($pwd_valid) {
-                Users::update_password(Session::get('uid'), $new_pwd);
-                
-                $message = '<strong>Password</strong> has been changed!';
-                $data = array('success' => TRUE, 'message' => $message);
-                return Response::json($data);
-            } else {
-                $message = '<strong>Current Password</strong> is wrong!';
-                $data = array('success' => FALSE, 'message' => $message);
-                return Response::json($data);
-            }
+        $currentPassword = Input::get('curpwd');
+        $newPassword = Input::get('newpwd');
+
+        $user = User::where('id', '=', Session::get('uid'))->first();
+
+        if (Hash::check($currentPassword, $user->password)) {
+            
+            $user->password = Hash::make($newPassword);
+            $user->save();
+            
+            $message = '<strong>Password</strong> has been changed!';
+
+            return Helper::json(true, $message);
+        } else {
+            $message = '<strong>Current Password</strong> is wrong!';
+
+            return Helper::json(false, $message);
         }
     }
 
