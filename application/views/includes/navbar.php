@@ -8,9 +8,9 @@
         <li class="divider-vertical"></li>
         <li><?=HTML::link('user/contacts/add', 'Add'); ?></li>
         <li class="divider-vertical"></li>
-        <li><?=HTML::link('user/delete', 'Delete'); ?></li>
+        <li><?=HTML::link('user/contacts/delete', 'Delete'); ?></li>
         <li class="divider-vertical"></li>
-        <li><?=HTML::link('user/edit', 'Edit'); ?></li>
+        <li><?=HTML::link('user/contacts/edit', 'Edit'); ?></li>
         <li class="divider-vertical"></li>
       </ul>
       <div class="pull-right">
