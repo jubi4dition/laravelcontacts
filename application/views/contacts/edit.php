@@ -7,6 +7,7 @@
   </div>
   <div class="row">
     <div class="span5 offset3">
+    <? if (count($contacts) != 0): ?>
       <form id="formEdit" class="well" action="<?=Url::to('user/contacts/edit'); ?>" method="post" accept-charset="utf-8">
         <select id="formSelect" name="name" class="input-block-level">
         <? foreach ($contacts as $contact): ?>
@@ -20,6 +21,11 @@
         <button type="submit" class="btn btn-warning btn-large">
         <i class="icon-pencil icon-white"></i> Edit Contact</button>
       </form>
+    <? else: ?>
+        <div class="alert alert-error">
+        <strong>There are no contacts for editing!</strong>
+        </div>
+    <? endif; ?>
     </div>
   </div>
   <div id="success" class="row" style="display: none">
