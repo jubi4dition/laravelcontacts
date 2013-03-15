@@ -1,6 +1,3 @@
-	<footer>
-		<p>&copy; 2012 built with Laravel 3.2.5 and Twitter Bootstrap 2.1.0</p>
-	</footer>
-</div><!-- /container -->
-</body>
-</html>
+<footer>
+  <p>&copy; 2013 built with Laravel v3.2.13, Bootstrap v2.3.1 and jQuery v1.9.1</p>
+</footer>

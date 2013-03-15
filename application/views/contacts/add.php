@@ -27,6 +27,8 @@
     </div>
   </div>
 </div>
+<?=render('includes.footer'); ?>
+</div>
 <?=HTML::script('js/jquery.js'); ?>
 <script>
 $(document).ready(function() {
@@ -63,4 +65,5 @@ $(document).ready(function() {
    $('.content').fadeIn(1000);
 });
 </script>
-<?=render('includes.footer'); ?>
+</body>
+</html>

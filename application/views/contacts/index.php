@@ -30,6 +30,8 @@
     </div>
   </div>
 </div>
+<?=render('includes/footer'); ?>
+</div>
 <?=HTML::script('js/jquery.js'); ?>
 <?=HTML::script('js/jquery.tablesorter.js'); ?>
 <script>
@@ -40,4 +42,5 @@ $(document).ready(function(){
   $(".content").fadeIn(1000);
 });
 </script>
-<?=render('includes/footer'); ?>
+</body>
+</html>
