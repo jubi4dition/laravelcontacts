@@ -11,9 +11,7 @@ class User_Controller extends Base_Controller {
 
     public function action_index()
     {
-        $contacts = Contact::where('uid', '=', Session::get('uid'))->get();
-
-        return View::make('user.contacts')->with('contacts', $contacts); 
+        return View::make('user.index'); 
     }
 
     public function action_profile()

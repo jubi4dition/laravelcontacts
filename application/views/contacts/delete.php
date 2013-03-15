@@ -7,6 +7,7 @@
   </div>
   <div class="row">
     <div class="span5 offset3">
+    <? if (count($contacts) != 0): ?>
       <form id="formDelete" class="well" action="<?=Url::to('user/contacts/delete'); ?>" method="post" accept-charset="utf-8">
         <select id="formSelect" name="name" class="input-block-level">
         <? foreach ($contacts as $contact): ?>
@@ -18,6 +19,11 @@
         <button type="submit" class="btn btn-danger btn-large">
         <i class="icon-trash icon-white"></i> Delete Contact</button>
       </form>
+    <? else: ?>
+      <div class="alert alert-error">
+      <strong>There are no contacts for deleting!</strong>
+      </div>
+    <? endif; ?>
     </div>
   </div>
   <div id="success" class="row" style="display: none">

@@ -27,7 +27,6 @@
   </div>
 </div>
 <?=HTML::script('js/jquery.js'); ?>
-<?=HTML::script('js/bootstrap-button.js'); ?>
 <script>
 $(document).ready(function() {
   
