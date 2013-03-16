@@ -55,7 +55,6 @@ body {
 .input-prepend .add-on {
   color: #999;
 }
-
 .navbar-inner {
   min-height: 40px;
   padding-right: 20px;
@@ -98,4 +97,7 @@ body {
 }
 .navbar-text > a:hover {
   color: #DDDDDD;
+}
+.navbar .brand img{
+  width: 57px;
 }

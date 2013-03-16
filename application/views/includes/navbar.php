@@ -1,7 +1,7 @@
 <div class="navbar navbar-static-top">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="<?=URL::to('user'); ?>"><img src="<?=URL::to_asset('img/yourcontacts.png'); ?>" width="57px"/></a>
+      <a class="brand" href="<?=URL::to('user'); ?>"><img src="<?=URL::to_asset('img/yourcontacts.png'); ?>"></a>
       <ul class="nav">
         <li class="divider-vertical"></li>
         <li id="nav-contacts"><?=HTML::link('user/contacts', 'Contacts'); ?></li>
