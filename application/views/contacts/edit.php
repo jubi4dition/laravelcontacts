@@ -1,9 +1,9 @@
 <?=render('includes.header'); ?>
-<?=render('includes.navbar', array('active' => 'edit')); ?>
+<?=render('includes.navbar'); ?>
 <div class="container">
 <div class="content" style="display:none">
   <div class="page-header">
-    <h1>Edit a Contact</h1>
+    <h1>Edit A Contact</h1>
   </div>
   <div class="row">
     <div class="span5 offset3">
@@ -91,7 +91,7 @@ $(document).ready(function() {
     });
   });
 
-  //$('#nav-edit').addClass('active');
+  $('#nav-edit').addClass('active');
 
   $('.content').fadeIn(1000);
 });

@@ -1,5 +1,5 @@
 <?=render('includes.header'); ?>
-<?=render('includes.navbar', array('active' => 'no')); ?>
+<?=render('includes.navbar'); ?>
 <div class="container">
 <div class="content" style="display:none">
   <div class="page-header">
@@ -37,9 +37,11 @@
 <script>
 $(document).ready(function(){
 
-  $("#tcontacts").tablesorter();
+  $('#tcontacts').tablesorter();
 
-  $(".content").fadeIn(1000);
+  $('#nav-contacts').addClass('active');
+
+  $('.content').fadeIn(1000);
 });
 </script>
 </body>

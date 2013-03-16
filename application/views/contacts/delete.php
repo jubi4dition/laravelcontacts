@@ -1,9 +1,9 @@
 <?=render('includes.header'); ?>
-<?=render('includes.navbar', array('active' => 'delete')); ?>
+<?=render('includes.navbar'); ?>
 <div class="container">
 <div class="content" style="display:none">
   <div class="page-header">
-    <h1>Delete a Contact</h1>
+    <h1>Delete A Contact</h1>
   </div>
   <div class="row">
     <div class="span5 offset3">
@@ -71,7 +71,7 @@ $(document).ready(function() {
     return false;
   });
 
-  //$('#nav-delete').addClass('active');
+  $('#nav-delete').addClass('active');
 
   $('.content').fadeIn(1000);
 });
