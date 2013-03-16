@@ -14,7 +14,6 @@
   <?=HTML::style('css/bootstrap.css'); ?>
   <?=HTML::style('css/bootstrap-responsive.css'); ?>
   <?=HTML::style('css/laravelcontacts.css'); ?>
-  <?=HTML::style('css/font-awesome.css'); ?>
   <?=HTML::style('css/tablesorter.css'); ?>
   <!-- Le fav and touch icons -->
   <link rel="shortcut icon" href="<?=URL::to_asset('/favicon.ico'); ?>">

@@ -8,12 +8,12 @@
   <div class="row">
     <div class="span5 offset3">
       <form id="formAdd" action="<?=URL::to('user/contacts/add'); ?>" method="post" class="well" accept-charset="utf-8">
-          <input type="text" name="name" class="input-block-level" value="Name" placeholder="Name" required maxlength="60" autofocus />
-          <input type="email" name="email" class="input-block-level" placeholder="Email" required maxlength="60" />
-          <input type="text" name="phone" class="input-block-level" placeholder="Phone" required maxlength="30" />
-          <button type="submit" class="btn btn-success btn-large">
-          <i class="icon-plus icon-white"></i> Add Contact</button>
-        </form>
+        <input type="text" name="name" class="input-block-level" value="Name" placeholder="Name" required maxlength="60" autofocus />
+        <input type="email" name="email" class="input-block-level" placeholder="Email" required maxlength="60" />
+        <input type="text" name="phone" class="input-block-level" placeholder="Phone" required maxlength="30" />
+        <button type="submit" class="btn btn-success btn-large">
+        <i class="icon-plus icon-white"></i> Add Contact</button>
+      </form>
     </div>
   </div>
   <div id="success" class="row" style="display: none">
