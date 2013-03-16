@@ -1,7 +1,7 @@
 <?=render('includes.header'); ?>
-<?=render('includes.navbar', array('active' => 'add')); ?>
+<?=render('includes.navbar'); ?>
 <div class="container">
-<div class="content" style="display:none">
+<div class="content">
   <div class="page-header">
     <h1>Add A Contact</h1>
   </div>

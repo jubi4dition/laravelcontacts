@@ -14,6 +14,7 @@ body {
   margin: 0 0px 15px;
   border-radius: 0px;
   border: 1px solid #454545;
+  display: none;
 }
 .page-header { /* Page header tweaks */
   background-color: #454545;

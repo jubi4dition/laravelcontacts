@@ -1,7 +1,7 @@
 <?=render('includes.header'); ?>
 <?=render('includes.nli_navbar'); ?>
 <div class="container">
-<div class="content" style="display:none">
+<div class="content">
   <div class="page-header">
     <h1>Login</h1>
   </div>
