@@ -28,7 +28,7 @@ class User_Contacts_Controller extends Base_Controller {
         sleep(1);
         
         $rules = array(
-            'name' => 'required|max:60|alpha_dash',
+            'name' => 'required|max:60|alpha_space',
             'email' => 'required|max:60|email',
             'phone' => 'required|max:30|alpha_num'
         );
@@ -72,7 +72,7 @@ class User_Contacts_Controller extends Base_Controller {
     {
         sleep(1);
         
-        $validation = Validator::make(Input::get(), array('name' => 'required|max:60|alpha_dash'));
+        $validation = Validator::make(Input::get(), array('name' => 'required|max:60|alpha_space'));
         
         if ($validation->fails()) {
             $message = "<strong>Deletion</strong> failed!";
@@ -103,7 +103,7 @@ class User_Contacts_Controller extends Base_Controller {
         sleep(1);
 
         $rules = array(
-            'name' => 'required|max:60|alpha_dash',
+            'name' => 'required|max:60|alpha_space',
             'email' => 'required|max:60|email',
             'phone' => 'required|max:30|alpha_num'
         );
