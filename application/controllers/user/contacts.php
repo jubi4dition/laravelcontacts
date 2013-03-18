@@ -133,6 +133,14 @@ class User_Contacts_Controller extends Base_Controller {
 
     public function post_data()
     {
+        $validation = Validator::make(Input::get(), array('name' => 'required|max:60|alpha_space'));
+        
+        if ($validation->fails()) {
+            $message = "No <strong>Data</strong> found!";
+            
+            return Helper::json(false, $message);
+        }
+
         $contact = Contact::where('uid', '=', Session::get('uid'))
             ->where('name', '=', Input::get('name'))
             ->first();
