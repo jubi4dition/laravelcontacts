@@ -131,7 +131,7 @@ class User_Contacts_Controller extends Base_Controller {
         return Helper::json(true, $message); 
     }
 
-    public function get_data()
+    public function post_data()
     {
         $contact = Contact::where('uid', '=', Session::get('uid'))
             ->where('name', '=', Input::get('name'))
