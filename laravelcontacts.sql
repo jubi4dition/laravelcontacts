@@ -15,8 +15,9 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `name` varchar(64) NOT NULL,
   `email` varchar(64) NOT NULL,
   `phone` varchar(32) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=89 ;
+  PRIMARY KEY (`id`),
+  KEY `uid` (`uid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=80 ;
 
 --
 -- Dumping data for table `contacts`
@@ -36,8 +37,6 @@ INSERT INTO `contacts` (`id`, `uid`, `name`, `email`, `phone`) VALUES
 (54, 8, 'contact7', 'contact7@mail.com', '777777777777777'),
 (64, 10, 'contact5', 'contact5@mail.com', '555555555555555'),
 (65, 10, 'contact6', 'contact6@mail.com', '666666666666666'),
-(72, 13, 'contact1', 'contact1@mail.com', '111111111111111'),
-(73, 13, 'contact2', 'contact2@mail.com', '222222222222222'),
 (74, 12, 'conatct1', 'contact1@mail.com', '111111111111111'),
 (75, 11, 'contact1', 'contact1@mail.com', '111111111111111'),
 (76, 11, 'contact2', 'contact2@mail.com', '222222222222222'),
@@ -67,7 +66,16 @@ INSERT INTO `users` (`id`, `email`, `password`) VALUES
 (7, 'user2@mail.com', '$2a$08$w2yDyOmfVMWtsSB1kWHXn..nQPo/wO0CWWTmsUuyw7Yu0R7utccOe'),
 (8, 'user3@mail.com', '$2a$08$2gzlfCgUXhsSqvJJbyrxL.1t7qfBAX7yyxviXOo/Waj8.kd4HSGke'),
 (9, 'user4@mail.com', '$2a$08$EwJ6Osbd3AA4qyDyLG5nw.LDuzuQ4jBLHzXrT1ZaUgwQmCVoa6pqC'),
-(10, 'user1@mail.com', '$2a$08$PjgPHqwZGTS9Ot1vtBXxCOR/4ofLrH6jEV11.kqL/qmp03k3c0pmW'),
+(10, 'user1@mail.com', '$2a$08$BTyoEqTEP0Dgs0x1VZ4JEum79MNaiba2.SWLsVHGOesNDr0ViNVVy'),
 (11, 'user5@mail.com', '$2a$08$jz7D6t8F7f76gQ1m8IcHM.Eyfn3QpDGPqfb7dJXuJq95oQJW3Jdlq'),
-(12, 'user6@mail.com', '$2a$08$jz7D6t8F7f76gQ1m8IcHM.Eyfn3QpDGPqfb7dJXuJq95oQJW3Jdlq'),
-(13, 'user7@mail.com', '$2a$08$jz7D6t8F7f76gQ1m8IcHM.Eyfn3QpDGPqfb7dJXuJq95oQJW3Jdlq');
+(12, 'user6@mail.com', '$2a$08$jz7D6t8F7f76gQ1m8IcHM.Eyfn3QpDGPqfb7dJXuJq95oQJW3Jdlq');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD CONSTRAINT `contacts_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
