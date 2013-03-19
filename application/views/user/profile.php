@@ -8,8 +8,8 @@
   <div class="row">
     <div class="span5 offset3">
       <form id="formPassword" class="well" action="<?=Url::to('user/password'); ?>" method="post" accept-charset="utf-8">
-        <input type="password" name="curpwd" class="input-block-level" value="Current Password" placeholder="Current Password" required maxlength="30" autofocus />
-        <input type="password" name="newpwd" class="input-block-level" placeholder="New Password" required maxlength="30" />
+        <input type="password" name="curpwd" class="input-block-level" value="Current Password" placeholder="Current Password" required maxlength="30" autofocus>
+        <input type="password" name="newpwd" class="input-block-level" placeholder="New Password" required maxlength="30">
         <button type="submit" class="btn btn-danger btn-large">
         <i class="icon-refresh icon-white"></i> Change Password</button>
       </form>

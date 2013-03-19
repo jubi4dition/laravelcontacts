@@ -7,7 +7,7 @@
   </div>
   <div class="row">
     <div class="span5 offset3">
-    <? if (count($contacts) != 0): ?>
+    <? if (count($contacts) > 0): ?>
       <form id="formEdit" class="well" action="<?=Url::to('user/contacts/edit'); ?>" method="post" accept-charset="utf-8">
         <select id="formSelect" name="name" class="input-block-level">
         <? foreach ($contacts as $contact): ?>
@@ -16,8 +16,8 @@
           </option>
         <? endforeach; ?>
         </select>
-        <input type="email" name="email" class="input-block-level" placeholder="Email" required maxlength="60" value="<?=$contacts[0]->email; ?>" />
-        <input type="text" name="phone" class="input-block-level" placeholder="Phone" required maxlength="30" value="<?=$contacts[0]->phone; ?>" />
+        <input type="email" name="email" class="input-block-level" value="<?=$contacts[0]->email; ?>" placeholder="Email" required maxlength="60">
+        <input type="text" name="phone" class="input-block-level" value="<?=$contacts[0]->phone; ?>" placeholder="Phone" required maxlength="30">
         <button type="submit" class="btn btn-warning btn-large">
         <i class="icon-pencil icon-white"></i> Edit Contact</button>
       </form>
@@ -49,6 +49,7 @@ $(document).ready(function() {
 
     var form = $(this);
     form.children('button').prop('disabled', true);
+    
     $('#success').hide();
     $('#error').hide();
 
@@ -81,7 +82,7 @@ $(document).ready(function() {
 
     $.post(faction, fdata, function(json) {
         
-        if(json.success) {
+        if (json.success) {
             $('#formEdit input[name="email"]').val(json.email);
             $('#formEdit input[name="phone"]').val(json.phone);
         } else {

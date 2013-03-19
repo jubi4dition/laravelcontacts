@@ -8,8 +8,8 @@
   <div class="row">
     <div class="span5 offset3">
       <form class="well" action="<?=Url::to('login/check'); ?>" method="post" accept-charset="utf-8">
-        <input type="text" class="input-block-level" name="email" value="Email" placeholder="Email" required maxlength="60" autofocus />
-        <input type="password" class="input-block-level" name="pwd" placeholder="Password" required maxlength="30" />
+        <input type="text" class="input-block-level" name="email" value="Email" placeholder="Email" required maxlength="60" autofocus>
+        <input type="password" class="input-block-level" name="pwd" placeholder="Password" required maxlength="30">
         <button type="submit" class="btn btn-primary btn-block">
         <i class="icon-home icon-white"></i> Login</button>
       </form>

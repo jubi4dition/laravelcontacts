@@ -47,6 +47,7 @@ $(document).ready(function() {
 
     var form = $(this);
     form.children('button').prop('disabled', true);
+    
     $('#success').hide();
     $('#error').hide();
 
