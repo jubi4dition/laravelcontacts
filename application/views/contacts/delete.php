@@ -59,7 +59,6 @@ $(document).ready(function() {
         if (json.success) {
             $('#successMessage').html(json.message);
             $('#success').show();
-            //$('#formSelect option[value="'+ json.name + '"]').remove();
             $('#formSelect option:selected').remove();
         } else {
             $('#errorMessage').html(json.message);

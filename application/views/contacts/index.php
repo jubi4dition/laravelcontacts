@@ -17,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-        <? foreach ($contacts as $contact): ?>
+        <? foreach ($contacts->results as $contact): ?>
           <tr>
             <td><?=$contact->id; ?></td>
             <td><?=$contact->name; ?></td>
@@ -27,6 +27,11 @@
         <? endforeach; ?>
         </tbody>
       </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span5 offset3">
+      <?=$contacts->links(); ?>
     </div>
   </div>
 </div>
