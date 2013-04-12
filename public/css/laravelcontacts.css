@@ -1,6 +1,7 @@
 /* Override some defaults */
 html,body {
-  background-image: url("img/mochaGrunge.png");
+ /*background-image: url("img/mochaGrunge.png");*/
+  background-color: #ECF0F1;
 }
 body {
   overflow-y: scroll; /* force vertical scrollbar */
@@ -13,11 +14,11 @@ body {
   padding: 20px;
   margin: 0 0px 15px;
   border-radius: 0px;
-  border: 1px solid #454545;
+  border: 1px solid #34495E;
   display: none;
 }
 .page-header { /* Page header tweaks */
-  background-color: #454545;
+  background-color: #34495E;
   padding: 1px 20px 1px;
   margin: -20px -20px 20px;
   border-bottom: 1px solid #7D7D7D;
@@ -25,7 +26,7 @@ body {
 .page-header h1 {
   line-height: 32px;
   font-size: 30px;
-  color: #DDDDDD;
+  color: #ECF0F1;
 }
 .content {
   min-height: 350px; /* minimum height for the content */
