@@ -2,5 +2,5 @@
 
 class Contact extends Eloquent {
 
-	public static $timestamps = false;
+	public static $timestamps = true;
 }

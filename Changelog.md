@@ -3,6 +3,15 @@ LaravelContacts
 
 This is the Changelog for LaravelContacts.
 
+Version 1.2.0
+-------------
+
+Here are the changes for Version 1.2.0 (2013/05/18)
+
+* Task DatabaseFiller to create the schema
+* New SQLite-file
+* Timestamps for data
+
 Version 1.1.1
 -------------
 
