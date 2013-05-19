@@ -83,20 +83,26 @@ class User_Contacts_Controller extends Base_Controller {
         $validation = Validator::make(Input::get(), array('name' => 'required|max:60|alpha_space'));
         
         if ($validation->fails()) {
-            $message = "<b>Deletion</b> failed!";
+            $message = "<b>Error!</b> Invalid <b>input!</b>";
             
             return Helper::json(false, $message);
         }
 
         $name = Input::get('name');
 
-        Contact::where('uid', '=', Session::get('uid'))
+        $deleted = Contact::where('uid', '=', Session::get('uid'))
             ->where('name', '=', $name)
             ->delete();
 
-        $message = "<b>".$name."</b> has been deleted!";
-
-        return Helper::json(true, $message);  
+        if ($deleted) {
+            $message = "<b>Success!</b> Contact <b>".$name."</b> has been deleted!";
+            
+            return Helper::json(true, $message);
+        } else {
+            $message = "<b>Error!</b> The <b>contact</b> couldn't be deleted!";
+            
+            return Helper::json(false, $message);
+        }  
     }
 
     public function get_edit()
@@ -119,7 +125,7 @@ class User_Contacts_Controller extends Base_Controller {
         $validation = Validator::make(Input::get(), $rules);
         
         if ($validation->fails()) {
-            $message = "<b>Editing</b> failed!";
+            $message = "<b>Error!</b> Invalid <b>input!</b>";
             
             return Helper::json(false, $message);
         }
@@ -132,11 +138,16 @@ class User_Contacts_Controller extends Base_Controller {
 
         $contact->email = Input::get('email');
         $contact->phone = Input::get('phone');
-        $contact->save();
-
-        $message = "Editing for <b>".$name."</b> has been done!";
         
-        return Helper::json(true, $message); 
+        if ($contact->save()) {
+            $message = "<b>Success!</b> Contact <b>".$contact->name."</b> has been edited!";
+            
+            return Helper::json(true, $message);
+        } else {
+            $message = "<b>Error!</b> The <b>contact</b> couldn't be edited!";
+            
+            return Helper::json(false, $message);
+        }  
     }
 
     public function post_data()
@@ -161,4 +172,5 @@ class User_Contacts_Controller extends Base_Controller {
         
         return Response::json($data);
     }
+
 }
