@@ -37,26 +37,33 @@ class User_Contacts_Controller extends Base_Controller {
         $validation = Validator::make(Input::get(), $rules);
         
         if ($validation->fails()) {
-            $message = "<strong>Adding</strong> failed!";
+            $message = "<b>Error!</b> Invalid <b>input!</b>";
 
             return Helper::json(false, $message);
         }
 
-        $name = Input::get('name');
+        $contact = Contact::where('uid', '=', Session::get('uid'))
+            ->where('name', '=', Input::get('name'))->first();
 
-        $created = Contact::create(array(
+        if ($contact != null) {
+            $message = "<b>Error!</b> A <b>contact</b> with this <b>name</b> already exists!";
+
+            return Helper::json(false, $message); 
+        }
+
+        $contact = Contact::create(array(
             'uid' => Session::get('uid'),
-            'name' => $name,
+            'name' => Input::get('name'),
             'email' => Input::get('email'),
             'phone' => Input::get('phone')
         ));
 
-        if ($created) {
-            $message = "<strong>".$name."</strong> has been added!";
+        if ($contact) {
+            $message = "<b>Success!</b> Contact <b>".$contact->name."</b> has been added!";
             
             return Helper::json(true, $message);
         } else {
-            $message = "<strong>".$name."</strong> already exists!";
+            $message = "<b>Error!</b> The <b>contact</b> couldn't be created!";
             
             return Helper::json(false, $message);
         }     
@@ -76,7 +83,7 @@ class User_Contacts_Controller extends Base_Controller {
         $validation = Validator::make(Input::get(), array('name' => 'required|max:60|alpha_space'));
         
         if ($validation->fails()) {
-            $message = "<strong>Deletion</strong> failed!";
+            $message = "<b>Deletion</b> failed!";
             
             return Helper::json(false, $message);
         }
@@ -87,7 +94,7 @@ class User_Contacts_Controller extends Base_Controller {
             ->where('name', '=', $name)
             ->delete();
 
-        $message = "<strong>".$name."</strong> has been deleted!";
+        $message = "<b>".$name."</b> has been deleted!";
 
         return Helper::json(true, $message);  
     }
@@ -112,7 +119,7 @@ class User_Contacts_Controller extends Base_Controller {
         $validation = Validator::make(Input::get(), $rules);
         
         if ($validation->fails()) {
-            $message = "<strong>Editing</strong> failed!";
+            $message = "<b>Editing</b> failed!";
             
             return Helper::json(false, $message);
         }
@@ -127,7 +134,7 @@ class User_Contacts_Controller extends Base_Controller {
         $contact->phone = Input::get('phone');
         $contact->save();
 
-        $message = "Editing for <strong>".$name."</strong> has been done!";
+        $message = "Editing for <b>".$name."</b> has been done!";
         
         return Helper::json(true, $message); 
     }
@@ -137,7 +144,7 @@ class User_Contacts_Controller extends Base_Controller {
         $validation = Validator::make(Input::get(), array('name' => 'required|max:60|alpha_space'));
         
         if ($validation->fails()) {
-            $message = "No <strong>Data</strong> found!";
+            $message = "No <b>Data</b> found!";
             
             return Helper::json(false, $message);
         }
