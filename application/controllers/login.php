@@ -34,7 +34,10 @@ class Login_Controller extends Base_Controller {
             
             return Redirect::to('user');
         } else {
-            return Redirect::to('login/error');
+            //Input::flash('only', array('email'));
+
+            //return Input::old('email');
+            return Redirect::to('login/error')->with_input('only', array('email'));;
         }
     }
 
