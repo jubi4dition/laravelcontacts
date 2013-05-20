@@ -12,7 +12,7 @@ body {
 .content { /* The white background content wrapper */
   background-color: #fff;
   padding: 20px;
-  margin: 0 0px 15px;
+  margin: 0 -21px 15px;
   border-radius: 0px;
   border: 1px solid #34495E;
   display: none;

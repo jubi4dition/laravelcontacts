@@ -6,7 +6,7 @@
     <h1>Add A Contact</h1>
   </div>
   <div class="row">
-    <div class="span5 offset3">
+    <div class="span6 offset3">
       <form id="formAdd" action="<?=URL::to('user/contacts/add'); ?>" method="post" class="well" accept-charset="utf-8">
         <input type="text" name="name" class="input-block-level" value="Name" placeholder="Name" required maxlength="60" autofocus>
         <input type="email" name="email" class="input-block-level" placeholder="Email" required maxlength="60">
@@ -17,12 +17,12 @@
     </div>
   </div>
   <div id="success" class="row" style="display: none">
-    <div class="span5 offset3">
+    <div class="span6 offset3">
       <div id="successMessage" class="alert alert-success"></div>
     </div>
   </div>
   <div id="error" class="row" style="display: none">
-    <div class="span5 offset3">
+    <div class="span6 offset3">
       <div id="errorMessage" class="alert alert-error"></div>
     </div>
   </div>

@@ -6,7 +6,7 @@
     <h1>Change Your Password</h1>
   </div>
   <div class="row">
-    <div class="span5 offset3">
+    <div class="span6 offset3">
       <form id="formPassword" class="well" action="<?=Url::to('user/password'); ?>" method="post" accept-charset="utf-8">
         <input type="password" name="curpwd" class="input-block-level" value="Current Password" placeholder="Current Password" required maxlength="30" autofocus>
         <input type="password" name="newpwd" class="input-block-level" placeholder="New Password" required maxlength="30">
@@ -16,12 +16,12 @@
     </div>
   </div>
   <div id="success" class="row" style="display: none">
-    <div class="span5 offset3">
+    <div class="span6 offset3">
       <div id="successMessage" class="alert alert-success"></div>
     </div>
   </div>
   <div id="error" class="row" style="display: none">
-    <div class="span5 offset3">
+    <div class="span6 offset3">
       <div id="errorMessage" class="alert alert-error"></div>
     </div>
   </div>

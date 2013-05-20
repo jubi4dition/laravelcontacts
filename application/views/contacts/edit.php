@@ -6,7 +6,7 @@
     <h1>Edit A Contact</h1>
   </div>
   <div class="row">
-    <div class="span5 offset3">
+    <div class="span6 offset3">
     <? if (count($contacts) > 0): ?>
       <form id="formEdit" class="well" action="<?=Url::to('user/contacts/edit'); ?>" method="post" accept-charset="utf-8">
         <select id="formSelect" name="name" class="input-block-level">
@@ -29,12 +29,12 @@
     </div>
   </div>
   <div id="success" class="row" style="display: none">
-    <div class="span5 offset3">
+    <div class="span6 offset3">
       <div id="successMessage" class="alert alert-success"></div>
     </div>
   </div>
   <div id="error" class="row" style="display: none">
-    <div class="span5 offset3">
+    <div class="span6 offset3">
       <div id="errorMessage" class="alert alert-error"></div>
     </div>
   </div>

@@ -6,7 +6,7 @@
     <h1>Welcome</h1>
   </div>
   <div class="row">
-    <div class="span5">
+    <div class="span6">
       <div class="alert alert-info">
       <h4>Hello, you can manage your contacts now!</h4>
       </div>

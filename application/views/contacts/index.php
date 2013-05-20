@@ -6,7 +6,7 @@
     <h1>Your Contacts</h1>
   </div>
   <div class="row">
-    <div class="span9 offset1">
+    <div class="span10 offset1">
       <table class="table table-striped table-bordered tablesorter" id="tcontacts">
         <thead>
           <tr>
@@ -30,7 +30,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="span5 offset3">
+    <div class="span10 offset1 text-center">
       <?=$contacts->links(); ?>
     </div>
   </div>
