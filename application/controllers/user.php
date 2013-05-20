@@ -31,7 +31,7 @@ class User_Controller extends Base_Controller {
         $validation = Validator::make(Input::get(), $rules);
 
         if ($validation->fails()) {
-            $message = '<strong>Changing</strong> failed!';
+            $message = "<b>Error!</b> Invalid <b>input!</b>";
             
             return Helper::json(false, $message);
         }
@@ -46,11 +46,11 @@ class User_Controller extends Base_Controller {
             $user->password = Hash::make($newPassword);
             $user->save();
             
-            $message = '<strong>Password</strong> has been changed!';
+            $message = '<b>Success!</b> The <b>Password</b> has been changed!';
 
             return Helper::json(true, $message);
         } else {
-            $message = '<strong>Current Password</strong> is wrong!';
+            $message = '<b>Error!</b> The current <b>Password</b> is wrong!';
 
             return Helper::json(false, $message);
         }
