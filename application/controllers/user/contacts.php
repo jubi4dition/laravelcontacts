@@ -29,7 +29,7 @@ class User_Contacts_Controller extends Base_Controller {
         
         $rules = array(
             'name' => 'required|max:60|alpha_space',
-            'email' => 'required|max:60|email',
+            'email' => 'required|max:80|email',
             'phone' => 'required|max:30|alpha_num'
         );
 
@@ -120,8 +120,8 @@ class User_Contacts_Controller extends Base_Controller {
 
         $rules = array(
             'name' => 'required|integer|min:0',
-            'email' => 'required|max:60|email',
-            'phone' => 'required|max:60|alpha_num'
+            'email' => 'required|max:80|email',
+            'phone' => 'required|max:30|alpha_num'
         );
 
         $validation = Validator::make(Input::get(), $rules);
