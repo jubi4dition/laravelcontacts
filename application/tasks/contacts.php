@@ -11,14 +11,15 @@ class Contacts_Task {
 
             $name = Str::random(8, 'alpha');
             $email = $name.'@mail.com';
-            $phone = rand();
+            $phone = rand();   
 
-            DB::table('contacts')->insert(array(
+            Contact::create(array(
                 'uid' => $userID,
                 'name' => $name,
                 'email' => $email,
                 'phone' => $phone
             ));
+
         }
 
         echo "Created Contacts: " .$count;
