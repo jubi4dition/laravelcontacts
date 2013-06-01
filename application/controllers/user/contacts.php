@@ -13,7 +13,6 @@ class User_Contacts_Controller extends Base_Controller {
 
     public function get_index()
     {
-        //$contacts = Contact::where('uid', '=', Session::get('uid'))->get();
         $contacts = Contact::where('uid', '=', Session::get('uid'))->paginate(50);
 
         return View::make('contacts.index')->with('contacts', $contacts); 
@@ -80,7 +79,7 @@ class User_Contacts_Controller extends Base_Controller {
     {
         sleep(1);
         
-        $validation = Validator::make(Input::get(), array('name' => 'required|max:60|alpha_space'));
+        $validation = Validator::make(Input::get(), array('name' => 'required|integer|min:0'));
         
         if ($validation->fails()) {
             $message = "<b>Error!</b> Invalid <b>input!</b>";
@@ -88,14 +87,17 @@ class User_Contacts_Controller extends Base_Controller {
             return Helper::json(false, $message);
         }
 
-        $name = Input::get('name');
+        $contact = Contact::where('uid', '=', Session::get('uid'))
+            ->where('id', '=', Input::get('name'))->first();
 
-        $deleted = Contact::where('uid', '=', Session::get('uid'))
-            ->where('name', '=', $name)
-            ->delete();
+        if ($contact == null) {
+            $message = "<b>Error!</b> No <b>Contact</b> found!";
+            
+            return Helper::json(false, $message);
+        }
 
-        if ($deleted) {
-            $message = "<b>Success!</b> Contact <b>".$name."</b> has been deleted!";
+        if ($contact->delete()) {
+            $message = "<b>Success!</b> Contact <b>".$contact->name."</b> has been deleted!";
             
             return Helper::json(true, $message);
         } else {
@@ -117,9 +119,9 @@ class User_Contacts_Controller extends Base_Controller {
         sleep(1);
 
         $rules = array(
-            'name' => 'required|max:60|alpha_space',
+            'name' => 'required|integer|min:0',
             'email' => 'required|max:60|email',
-            'phone' => 'required|max:30|alpha_num'
+            'phone' => 'required|max:60|alpha_num'
         );
 
         $validation = Validator::make(Input::get(), $rules);
@@ -129,11 +131,9 @@ class User_Contacts_Controller extends Base_Controller {
             
             return Helper::json(false, $message);
         }
-            
-        $name = Input::get('name');
 
         $contact = Contact::where('uid', '=', Session::get('uid'))
-            ->where('name', '=', $name)
+            ->where('id', '=', Input::get('name'))
             ->first();
 
         $contact->email = Input::get('email');
@@ -152,20 +152,26 @@ class User_Contacts_Controller extends Base_Controller {
 
     public function post_data()
     {
-        $validation = Validator::make(Input::get(), array('name' => 'required|max:60|alpha_space'));
+        $validation = Validator::make(Input::get(), array('name' => 'required|integer|min:0'));
         
         if ($validation->fails()) {
-            $message = "No <b>Data</b> found!";
+            $message = "<b>Error!</b> Invalid <b>input!</b>";
             
             return Helper::json(false, $message);
         }
 
         $contact = Contact::where('uid', '=', Session::get('uid'))
-            ->where('name', '=', Input::get('name'))
+            ->where('id', '=', Input::get('name'))
             ->first();
 
+        if ($contact == null) {
+            $message = "<b>Error!</b> No <b>Contact</b> found!";
+            
+            return Helper::json(false, $message);
+        }
+
         $data = array(
-            'success' => TRUE,
+            'success' => true,
             'email' => $contact->email,
             'phone' => $contact->phone
         );

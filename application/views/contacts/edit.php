@@ -11,7 +11,7 @@
       <form id="formEdit" class="well" action="<?=Url::to('user/contacts/edit'); ?>" method="post" accept-charset="utf-8">
         <select id="formSelect" name="name" class="input-block-level">
         <? foreach ($contacts as $contact): ?>
-          <option value="<?=$contact->name; ?>">
+          <option value="<?=$contact->id; ?>">
             <?=$contact->name; ?>
           </option>
         <? endforeach; ?>
@@ -22,9 +22,7 @@
         <i class="icon-pencil icon-white"></i> Edit Contact</button>
       </form>
     <? else: ?>
-        <div class="alert alert-error">
-        <strong>There are no contacts for editing!</strong>
-        </div>
+        <div class="alert alert-error"><b>Error!</b> There are no <b>contacts</b>!</div>
     <? endif; ?>
     </div>
   </div>

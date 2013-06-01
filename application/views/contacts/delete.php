@@ -11,7 +11,7 @@
       <form id="formDelete" class="well" action="<?=Url::to('user/contacts/delete'); ?>" method="post" accept-charset="utf-8">
         <select id="formSelect" name="name" class="input-block-level">
         <? foreach ($contacts as $contact): ?>
-          <option value="<?=$contact->name; ?>">
+          <option value="<?=$contact->id; ?>">
             <?=$contact->name; ?>
           </option>
         <? endforeach; ?>
