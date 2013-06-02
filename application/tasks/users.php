@@ -7,12 +7,20 @@ class Users_Task {
         $email = $arguments[0];
         $password = $arguments[1];
 
-        DB::table('users')->insert(array(
-            'email' => $email,
-            'password' => Hash::make($password)
-        ));
+        if (User::where('email', '=', $email)->count() != 0) {
+            echo "Email is already used.";
+        } else {
+            $user = User::create(array(
+                'email' => $email,
+                'password' => Hash::make($password)
+            ));
 
-        echo "User created!";
+            if ($user) {
+                echo "User created!";
+            } else {
+                echo "User not created!";
+            }
+        }   
     }
 
     public function delete($arguments)
