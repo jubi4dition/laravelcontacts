@@ -7,6 +7,7 @@
 */
 
 Route::controller('login');
+Route::controller('signup');
 
 Route::controller('user.contacts');
 Route::controller('user');

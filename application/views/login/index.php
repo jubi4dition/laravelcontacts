@@ -29,7 +29,7 @@
       <div class="alert alert-info">
         <p><strong>You</strong> are not logged in!</p>
         <small>No Account? </small>
-        <a href="#" class="btn btn-info"><i class="icon-arrow-right icon-white"></i> sign up now</a>
+        <a href="<?=Url::to('signup'); ?>" class="btn btn-info"><i class="icon-arrow-right icon-white"></i> Sign up now</a>
       </div>
     </div>
   </div>

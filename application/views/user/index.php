@@ -10,6 +10,8 @@
       <div class="alert alert-info">
       <h4>Hello, you can manage your contacts now!</h4>
       </div>
+      <p>Last updated: <code><?=Contact::order_by('updated_at', 'desc')->first()->name; ?></code></p>
+      <p>Last created: <code><?=Contact::order_by('created_at', 'desc')->first()->name; ?></code></p>
     </div>
   </div>
 </div>
