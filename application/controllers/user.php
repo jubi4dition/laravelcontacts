@@ -39,7 +39,7 @@ class User_Controller extends Base_Controller {
         $currentPassword = Input::get('curpwd');
         $newPassword = Input::get('newpwd');
 
-        $user = User::where('id', '=', Session::get('uid'))->first();
+        $user = Auth::user();
 
         if (Hash::check($currentPassword, $user->password)) {
             
