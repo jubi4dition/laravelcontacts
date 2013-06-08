@@ -6,6 +6,8 @@
         <li class="divider-vertical"></li>
         <li id="nav-contacts"><?=HTML::link('user/contacts', 'Contacts'); ?></li>
         <li class="divider-vertical"></li>
+        <li id="nav-search"><?=HTML::link('user/contacts/search', 'Search'); ?></li>
+        <li class="divider-vertical"></li>
         <li id="nav-add"><?=HTML::link('user/contacts/add', 'Add'); ?></li>
         <li class="divider-vertical"></li>
         <li id="nav-delete"><?=HTML::link('user/contacts/delete', 'Delete'); ?></li>

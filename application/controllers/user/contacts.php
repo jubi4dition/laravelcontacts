@@ -68,6 +68,27 @@ class User_Contacts_Controller extends Base_Controller {
         }     
     }
 
+    public function get_search()
+    {
+        return View::make('contacts.search');
+    }
+
+    public function post_search()
+    {
+        $validation = Validator::make(Input::get(), array('name' => 'required|max:10|alpha'));
+
+        if ($validation->fails()) {
+
+            return json_encode(array());
+        }
+
+        $search = Input::get('name');
+
+        $contacts = Contact::where('name', 'LIKE', $search.'%')->get();
+        
+        return eloquent_to_json($contacts);
+    }
+
     public function get_delete()
     {
         $contacts = Contact::where('uid', '=', Session::get('uid'))->get();
