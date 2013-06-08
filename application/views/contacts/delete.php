@@ -20,9 +20,7 @@
         <i class="icon-trash icon-white"></i> Delete Contact</button>
       </form>
     <? else: ?>
-      <div class="alert alert-error">
-      <strong>There are no contacts for deleting!</strong>
-      </div>
+      <div class="alert alert-error"><b>Error!</b> There are no <b>contacts</b>!</div>
     <? endif; ?>
     </div>
   </div>

@@ -3,15 +3,22 @@
 <div class="container">
 <div class="content">
   <div class="page-header">
-    <h1>Welcome</h1>
+    <h1>Home</h1>
   </div>
   <div class="row">
     <div class="span6">
-      <div class="alert alert-info">
-      <h4>Hello, you can manage your contacts now!</h4>
+      <div class="alert alert-info">Welcome to <b>LaravelContacts</b>, you can manage your <b>contacts</b> now!</div>
+    <? if (Contact::where('uid', '=', Session::get('uid'))->count() > 0): ?>
+      <div class="well well-small">
+        <b>Contacts:</b> <span class="badge badge-info"><?=Contact::where('uid', '=', Session::get('uid'))->count(); ?></span>
       </div>
-      <p>Last updated: <code><?=Contact::order_by('updated_at', 'desc')->first()->name; ?></code></p>
-      <p>Last created: <code><?=Contact::order_by('created_at', 'desc')->first()->name; ?></code></p>
+      <div class="well well-small">
+        <b>Last updated:</b> <?=Contact::where('uid', '=', Session::get('uid'))->order_by('updated_at', 'desc')->first()->name; ?>
+      </div>
+      <div class="well well-small">
+        <b>Last created:</b> <?=Contact::where('uid', '=', Session::get('uid'))->order_by('created_at', 'desc')->first()->name; ?>
+      </div>
+    <? endif; ?>
     </div>
   </div>
 </div>
