@@ -22,7 +22,7 @@
         <i class="icon-pencil icon-white"></i> Edit Contact</button>
       </form>
     <? else: ?>
-        <div class="alert alert-error"><b>Error!</b> There are no <b>contacts</b>!</div>
+        <div class="alert alert-info"><b>Info!</b> There are no <b>contacts</b>!</div>
     <? endif; ?>
     </div>
   </div>
