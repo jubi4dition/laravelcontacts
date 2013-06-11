@@ -13,7 +13,9 @@ class User_Contacts_Controller extends Base_Controller {
 
     public function get_index()
     {
-        $contacts = Contact::where('uid', '=', Session::get('uid'))->paginate(50);
+        $contacts = Contact::where('uid', '=', Session::get('uid'))
+            ->order_by('id', 'desc')
+            ->paginate(25);
 
         return View::make('contacts.index')->with('contacts', $contacts); 
     }
