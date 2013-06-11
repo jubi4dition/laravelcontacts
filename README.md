@@ -4,9 +4,9 @@ LaravelContacts
 LaravelContacts is the counterpart to [YourContacts](https://github.com/jubi4dition/yourcontacts). 
 Now it's based on the PHP Framework Laravel-3 instead of Codeigniter-2.
 
-See it in action: http://youtu.be/il3Enve9JwI
+See it in action: http://youtu.be/K-GM9SeyH1Y
 
-Current Version: **1.2.0**
+Current Version: **1.2.3**
 
 Usage
 -----

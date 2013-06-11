@@ -3,6 +3,22 @@ LaravelContacts
 
 This is the Changelog for LaravelContacts.
 
+Version 1.2.3
+-------------
+
+Here are the changes for Version 1.2.3 (2013/06/11)
+
+* Task for creating random contacts
+* New page for searching contacts
+* Pagination for contacts
+* New page for signup
+* improved error messages
+* keep old input for login
+* convert email always to lowercase
+* jquery 2.0.1
+* more infos on home
+* better layout for content
+
 Version 1.2.0
 -------------
 
